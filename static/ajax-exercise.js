@@ -16,7 +16,6 @@ $('#get-fortune-button').on('click', showFortune);
 
 
 
-
 // PART 2: SHOW WEATHER
 
 function showWeather(evt) {
@@ -26,7 +25,9 @@ function showWeather(evt) {
     let formData = {"zipcode": $("#zipcode-field").val()};
 
 
-    // TODO: request weather with that URL and show the forecast in #weather-info
+    $.get(url, formData, (results) => {
+        $("#weather-info").html(results.forecast);
+    });
 }
 
 $("#weather-form").on('submit', showWeather);
